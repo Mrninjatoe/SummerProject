@@ -1,5 +1,4 @@
 #include "engine.hpp"
-#include "shaderprogram.hpp"
 
 Engine::~Engine() {
 	
@@ -9,17 +8,32 @@ int Engine::run() {
 	_init();
 	SDL_Event event;
 	bool quit = false;
+	uint32_t lastTime = SDL_GetTicks();
+	float time = 0.f;
+
 	while (!quit) {
 		SDL_GL_SwapWindow(_window);
 		while (SDL_PollEvent(&event)) {
 			if (event.type == SDL_QUIT)
 				quit = true;
 		}
-		// Rendering and updating etc...
-		glClearColor(1, 0, 0, 1);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		uint32_t curTime = SDL_GetTicks();
+		float delta = (curTime - lastTime) / 1000.0f;
+		lastTime = curTime;
 
+		if (time >= M_PI * 2)
+			time = 0.f;
+
+		// Rendering and updating etc...
+		glClearColor(0, 0, 0, 1);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		for (std::shared_ptr<Entity> entity : _entities) {
+			_basicShader->bind().setUniform("nice", time);
+			entity->render();
+		}
+		time += 1 * delta;
 	}
+
 	return 0;
 }
 
@@ -28,7 +42,9 @@ void Engine::_init() {
 	_height = 800;
 	_initSDL();
 	_initGL();
-	ShaderProgram temp = ShaderProgram("assets/shaders/final.vert", "assets/shaders/final.frag");
+	_basicShader = std::make_shared<ShaderProgram>("assets/shaders/final.vert", "assets/shaders/final.frag");
+	_basicShader->bind().addUniform("nice");
+	_entities.push_back(std::make_shared<PrimitiveMeshes>(PrimitiveMeshes::Primitives::TRIANGLE));
 }
 
 void Engine::_initSDL() {
@@ -67,7 +83,7 @@ void Engine::_initGL() {
 	
 	SDL_GL_SetSwapInterval(true);
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
+	glDisable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	glEnable(GL_PROGRAM_POINT_SIZE);
 	

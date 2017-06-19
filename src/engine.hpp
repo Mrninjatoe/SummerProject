@@ -3,9 +3,14 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <memory>
+#include <vector>
 #include "lib/glad.h"
 #include <SDL2/SDL_image.h>
 #include <iostream>
+
+#include "primitivemeshes.hpp"
+#include "shaderprogram.hpp"
 
 class Engine {
 public:
@@ -39,7 +44,9 @@ private:
 	int _height;
 	SDL_Window* _window;
 	SDL_GLContext _context;
-
+	std::shared_ptr<ShaderProgram> _basicShader;
+	std::vector<std::shared_ptr<PrimitiveMeshes>> _entities;
+	
 	Engine() {}
 	virtual ~Engine();
 	void _init();

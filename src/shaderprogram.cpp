@@ -65,7 +65,13 @@ GLuint ShaderProgram::_createShader(const std::string& path, GLenum type) {
 	return id;
 }
 
-ShaderProgram& ShaderProgram::bind() {
+ShaderProgram& ShaderProgram::addUniform(const std::string& name) {
+	GLint location = glGetUniformLocation(_program, name.c_str());
+	_uniform[name] = location;
+	return *this;
+}
 
+ShaderProgram& ShaderProgram::bind() {
+	glUseProgram(_program);
 	return *this;
 }

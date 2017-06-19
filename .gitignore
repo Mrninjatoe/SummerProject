@@ -19,6 +19,7 @@ $RECYCLE.BIN/
 .vs/
 *.filters
 *.user
+build/
 
 # Windows shortcuts
 *.lnk
