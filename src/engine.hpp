@@ -11,6 +11,7 @@
 
 #include "primitivemeshes.hpp"
 #include "shaderprogram.hpp"
+#include "world.hpp"
 
 class Engine {
 public:
@@ -45,7 +46,7 @@ private:
 	SDL_Window* _window;
 	SDL_GLContext _context;
 	std::shared_ptr<ShaderProgram> _basicShader;
-	std::vector<std::shared_ptr<PrimitiveMeshes>> _entities;
+	std::shared_ptr<World> _world;
 	
 	Engine() {}
 	virtual ~Engine();

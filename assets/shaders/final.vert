@@ -10,6 +10,6 @@ out vec3 color;
 uniform float nice;
 
 void main(){
-	gl_Position = vec4(vertPos / gl_InstanceID, 1);
-	color = vec3(vertColor.x * sin(nice), vertColor.y, vertColor.z);
+	gl_Position = vec4(vertPos * 0.1f, 1);
+	color = vec3(vertColor.x * sin(nice) + cos(nice), vertColor.y / 100 * sin(nice), vertColor.z);
 }

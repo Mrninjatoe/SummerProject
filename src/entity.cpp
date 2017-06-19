@@ -6,6 +6,8 @@ Entity::~Entity() {
 	}
 }
 
-void Entity::addComponent(std::type_index type, Component* c) {
-	_components[type] = c;
+void Entity::update(float delta) {
+	for (auto&c : _components) {
+		c.second->update(delta);
+	}
 }

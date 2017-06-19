@@ -9,9 +9,11 @@ class Component;
 class Entity {
 public:
 	~Entity();
-	virtual void render() = 0;
 
-	void addComponent(std::type_index type, Component* c);
+	template <typename T>
+	void addComponent(T c) {
+		_components[std::type_index(typeid(T))] = (Component*)c;
+	}
 	template <typename T>
 	T* get() {
 		auto it = _components.find(std::type_index(typeid(T)));
@@ -27,6 +29,7 @@ public:
 	std::string getType() const{
 		return _type;
 	}
+	void update(float delta);
 private:
 	std::string _type;
 	std::map<std::type_index, Component*> _components;

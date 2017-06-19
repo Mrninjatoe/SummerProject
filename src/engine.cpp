@@ -1,4 +1,5 @@
 #include "engine.hpp"
+#include "components/modelcomponent.hpp"
 
 Engine::~Engine() {
 	
@@ -27,10 +28,8 @@ int Engine::run() {
 		// Rendering and updating etc...
 		glClearColor(0, 0, 0, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		for (std::shared_ptr<Entity> entity : _entities) {
-			_basicShader->bind().setUniform("nice", time);
-			entity->render();
-		}
+		_basicShader->bind().setUniform("nice", time);
+		_world->update(delta);
 		time += 1 * delta;
 	}
 
@@ -44,7 +43,7 @@ void Engine::_init() {
 	_initGL();
 	_basicShader = std::make_shared<ShaderProgram>("assets/shaders/final.vert", "assets/shaders/final.frag");
 	_basicShader->bind().addUniform("nice");
-	_entities.push_back(std::make_shared<PrimitiveMeshes>(PrimitiveMeshes::Primitives::TRIANGLE));
+	_world = std::make_shared<World>();
 }
 
 void Engine::_initSDL() {
