@@ -1,5 +1,9 @@
-﻿  engine.cpp
-  component.cpp
+﻿  primitivemeshes.cpp
+d:\github\summerproject\src\primitivemeshes.cpp(22): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  main.cpp
+d:\github\summerproject\src\main.cpp(6): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  entity.cpp
+  engine.cpp
   Generating Code...
   SummerProject.vcxproj -> D:\Github\SummerProject\/build/Debug/x64/SummerProject.exe
   SummerProject.vcxproj -> D:\Github\SummerProject\/build/Debug/x64/SummerProject.pdb (Partial PDB)
