@@ -14,10 +14,10 @@ PrimitiveMeshes::PrimitiveMeshes(PrimitiveMeshes::Primitives type) {
 		break;
 	}
 }
+
 PrimitiveMeshes::PrimitiveMeshes(const std::string& name) {
 	_loadMesh(name);
 }
-
 
 PrimitiveMeshes::~PrimitiveMeshes() {
 	
@@ -150,13 +150,11 @@ void PrimitiveMeshes::_loadMesh(const std::string& fileName) {
 					nIndicies.push_back(normalIndex[0]);
 					nIndicies.push_back(normalIndex[1]);
 					nIndicies.push_back(normalIndex[2]);
-					// printf("%d/%d/%d %d/%d/%d %d/%d/%d\n", vertexIndex[0], uvIndex[0], normalIndex[0], vertexIndex[1], uvIndex[1], normalIndex[1], vertexIndex[2],
-					//			 uvIndex[2], normalIndex[2]);
 				}
 			}
 		}
 		Vertex tmp;
-		for (unsigned int i = 0; i < vIndicies.size(); i++) {
+		for (int i = 0; i < vIndicies.size(); i++) {
 			unsigned int vertexIndex = vIndicies[i];
 			unsigned int uvIndex = uvIndicies[i];
 			unsigned int normalIndex = nIndicies[i];
@@ -166,7 +164,15 @@ void PrimitiveMeshes::_loadMesh(const std::string& fileName) {
 			tmp.position = vertex;
 			tmp.texCoords = uv;
 			tmp.normal = normal;
-			tmp.color = glm::vec3(0, 0, 255);
+			// colors.
+			if (i % 2 == 0)
+				tmp.color = glm::vec3(0.5, 0.1, 0.7);
+			else if (i % 3 == 0)
+				tmp.color = glm::vec3(0.9, 0.5, 0.9);
+			else if (i % 4 == 0)
+				tmp.color = glm::vec3(0.2, 0.5, 0.4);
+			else
+				tmp.color = glm::vec3(0.2f, 0.5f, 0.2f);
 			_vertices.push_back(tmp);
 			_indices.push_back(i);
 		}

@@ -150,22 +150,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\components\cameracomponent.cpp" />
     <ClCompile Include="src\components\component.cpp" />
     <ClCompile Include="src\components\modelcomponent.cpp" />
+    <ClCompile Include="src\components\transformcomponent.cpp" />
     <ClCompile Include="src\engine.cpp" />
+    <ClCompile Include="src\entities\blockchunk.cpp" />
     <ClCompile Include="src\entity.cpp" />
     <ClCompile Include="src\lib\glad.c" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\primitivemeshes.cpp" />
+    <ClCompile Include="src\entities\primitivemeshes.cpp" />
     <ClCompile Include="src\shaderprogram.cpp" />
     <ClCompile Include="src\world.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\cameracomponent.hpp" />
     <ClInclude Include="src\components\component.hpp" />
     <ClInclude Include="src\components\modelcomponent.hpp" />
+    <ClInclude Include="src\components\transformcomponent.hpp" />
     <ClInclude Include="src\engine.hpp" />
+    <ClInclude Include="src\entities\blockchunk.hpp" />
     <ClInclude Include="src\entity.hpp" />
-    <ClInclude Include="src\primitivemeshes.hpp" />
+    <ClInclude Include="src\entities\primitivemeshes.hpp" />
     <ClInclude Include="src\shaderprogram.hpp" />
     <ClInclude Include="src\world.hpp" />
   </ItemGroup>

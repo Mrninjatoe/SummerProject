@@ -1,4 +1,5 @@
 #include "entity.hpp"
+#include "components/modelcomponent.hpp"
 
 Entity::~Entity() {
 	for (auto& c : _components) {

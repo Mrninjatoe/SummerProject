@@ -3,16 +3,15 @@
 #include <typeindex>
 #include <string>
 #include "components/component.hpp"
-
-class Component;
+#include <iostream>
 
 class Entity {
 public:
 	~Entity();
 
 	template <typename T>
-	void addComponent(T c) {
-		_components[std::type_index(typeid(T))] = (Component*)c;
+	void addComponent(std::type_index type, T c) {
+		_components[type] = (Component*)c;
 	}
 	template <typename T>
 	T* get() {

@@ -1,7 +1,7 @@
 #pragma once
-#include "entity.hpp"
+#include "../entity.hpp"
 #include <glm/glm.hpp>
-#include "lib/glad.h"
+#include "../lib/glad.h"
 #include <vector>
 class PrimitiveMeshes{
 	struct Vertex {
@@ -11,7 +11,7 @@ class PrimitiveMeshes{
 		glm::vec2 texCoords;
 	};
 public:
-	enum Primitives : int {TRIANGLE = 0, QUAD, PRISM};
+	enum Primitives : int {TRIANGLE = 0, QUAD, PRISM, CHUNK};
 	PrimitiveMeshes() {}
 	PrimitiveMeshes(const std::string& fileName);
 	PrimitiveMeshes(Primitives type);

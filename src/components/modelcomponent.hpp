@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 #include "component.hpp"
-#include "../primitivemeshes.hpp"
+#include "../entities/primitivemeshes.hpp"
 
 class ModelComponent : public Component {
 public:
@@ -9,8 +9,8 @@ public:
 	ModelComponent(const std::string& fileName);
 	virtual ~ModelComponent();
 	virtual void update(float delta);
-	PrimitiveMeshes* getMesh() const;
 	void render();
+	void render(glm::mat4 m);
 protected:
 	std::shared_ptr<PrimitiveMeshes> _mesh;
 private:

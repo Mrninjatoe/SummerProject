@@ -9,7 +9,7 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 
-#include "primitivemeshes.hpp"
+#include "entities/primitivemeshes.hpp"
 #include "shaderprogram.hpp"
 #include "world.hpp"
 
@@ -23,6 +23,7 @@ public:
 	Engine(Engine const&) = delete;
 	void operator=(Engine const&) = delete;
 	int run();
+	std::shared_ptr<ShaderProgram> getShader() const { return _basicShader; } // gonna be a vector of the shaders.
 	static void APIENTRY openglCallbackFunction(
 		GLenum source,
 		GLenum type,
@@ -53,4 +54,5 @@ private:
 	void _init();
 	void _initSDL();
 	void _initGL();
+	void _initVariables();
 };

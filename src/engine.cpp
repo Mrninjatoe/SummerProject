@@ -41,9 +41,7 @@ void Engine::_init() {
 	_height = 800;
 	_initSDL();
 	_initGL();
-	_basicShader = std::make_shared<ShaderProgram>("assets/shaders/final.vert", "assets/shaders/final.frag");
-	_basicShader->bind().addUniform("nice");
-	_world = std::make_shared<World>();
+	_initVariables();
 }
 
 void Engine::_initSDL() {
@@ -82,9 +80,19 @@ void Engine::_initGL() {
 	
 	SDL_GL_SetSwapInterval(true);
 	glEnable(GL_DEPTH_TEST);
-	glDisable(GL_CULL_FACE);
+	glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);
 	glEnable(GL_PROGRAM_POINT_SIZE);
 	
 	glViewport(0, 0, _width, _height);
+}
+
+void Engine::_initVariables() {
+	_basicShader = std::make_shared<ShaderProgram>("assets/shaders/final.vert", "assets/shaders/final.frag");
+	_basicShader->bind().addUniform("nice")
+		.addUniform("proj")
+		.addUniform("view")
+		.addUniform("model")
+		.addUniform("lightPos");
+	_world = std::make_shared<World>();
 }
