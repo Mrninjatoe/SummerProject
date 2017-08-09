@@ -18,7 +18,7 @@ void main(){
 	float ambStr = 0.1f;
 	vec3 ambient = ambStr * vec3(1, 1, 1);
 
-	vec3 result = (ambient + diffuse) * color;
+	vec3 result = (diffuse) * color;
 
 	outColor = vec4(result, 1);
 }

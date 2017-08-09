@@ -9,7 +9,6 @@ out vec3 color;
 out vec3 worldPos;
 out vec3 normal;
 
-uniform float nice;
 uniform mat4 proj;
 uniform mat4 view;
 uniform mat4 model;

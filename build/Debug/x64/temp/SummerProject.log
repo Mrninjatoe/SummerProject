@@ -1,3 +1,6 @@
-﻿  cameracomponent.cpp
+﻿  particlecomponent.cpp
+d:\github\summerproject\src\components\particlecomponent.cpp(27): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+d:\github\summerproject\src\components\particlecomponent.cpp(61): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+d:\github\summerproject\src\components\particlecomponent.cpp(79): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
   SummerProject.vcxproj -> D:\Github\SummerProject\/build/Debug/x64/SummerProject.exe
   SummerProject.vcxproj -> D:\Github\SummerProject\/build/Debug/x64/SummerProject.pdb (Partial PDB)

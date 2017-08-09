@@ -29,12 +29,11 @@ void CameraComponent::setCameraPos(glm::vec3 cameraPos) {
 void CameraComponent::setLookAt(glm::vec3 lookAt) {
 	_lookAt = lookAt;
 	_calculateUp();
-	_view = glm::lookAt(_cameraPos, lookAt, glm::vec3(1, 0, 0));
+	_view = glm::lookAt(_cameraPos, lookAt, _up);
 }
 
 void CameraComponent::_calculateUp() {
-	glm::vec3 tempUp = glm::vec3(0, 1, 0);
 	glm::vec3 dir = glm::normalize(_cameraPos - _lookAt);
-	_right = glm::cross(dir, tempUp);
-	_up = glm::cross(_right, dir);
+	_right = glm::cross(_up, dir);
+	_up = glm::cross(dir, _right);
 }

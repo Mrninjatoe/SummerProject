@@ -26,7 +26,7 @@ PrimitiveMeshes::~PrimitiveMeshes() {
 void PrimitiveMeshes::_createTriangle() {
 	_vertices.push_back(
 		Vertex{
-			glm::vec3(-1.0f, -1.0f, 0.0f),
+			glm::vec3(-0.5f, -0.5f, 0.0f),
 			glm::vec3(1.0f, -1.0f, 0.0f),
 			glm::vec3(1.0f, 0.f, 0.f),
 			glm::vec2(0.0f, 0.0f)
@@ -34,7 +34,7 @@ void PrimitiveMeshes::_createTriangle() {
 	);
 	_vertices.push_back(
 		Vertex{
-		glm::vec3(1.0f, -1.0f, 0.0f),
+		glm::vec3(0.5f, -0.5f, 0.0f),
 		glm::vec3(1.0f, -1.0f, 0.0f),
 		glm::vec3(1.0f, 1.f, 0.f),
 		glm::vec2(0.0f, 0.0f)
@@ -42,7 +42,7 @@ void PrimitiveMeshes::_createTriangle() {
 	);
 	_vertices.push_back(
 		Vertex{
-		glm::vec3(0.0f, 1.0f, 0.0f),
+		glm::vec3(0.0f, 0.5f, 0.0f),
 		glm::vec3(1.0f, -1.0f, 0.0f),
 		glm::vec3(.0f, 1.f, 1.f),
 		glm::vec2(0.0f, 0.0f)
@@ -57,7 +57,49 @@ void PrimitiveMeshes::_createTriangle() {
 }
 
 void PrimitiveMeshes::_createQuad() {
-	
+	{
+		_vertices.push_back(
+			Vertex{
+			glm::vec3(-0.5f, -0.5f, 0.0f),
+			glm::vec3(0, 0, -1.f),
+			glm::vec3(1.0f, 0.f, 0.f),
+			glm::vec2(0.0f, 0.0f)
+		}
+		);
+		_vertices.push_back(
+			Vertex{
+			glm::vec3(-0.5f, 0.5f, 0.0f),
+			glm::vec3(0, 0, -1.f),
+			glm::vec3(1.0f, 1.f, 0.f),
+			glm::vec2(0.0f, 0.0f)
+		}
+		);
+		_vertices.push_back(
+			Vertex{
+			glm::vec3(0.5f, 0.5f, 0.0f),
+			glm::vec3(0, 0, -1.f),
+			glm::vec3(.0f, 1.f, 1.f),
+			glm::vec2(0.0f, 0.0f)
+		}
+		);
+		_vertices.push_back(
+			Vertex{
+			glm::vec3(0.5f, -0.5f, 0.0f),
+			glm::vec3(0, 0, -1.f),
+			glm::vec3(.0f, 1.f, 1.f),
+			glm::vec2(0.0f, 0.0f)
+		}
+		);
+	}
+
+	_indices.push_back(0);
+	_indices.push_back(1);
+	_indices.push_back(2);
+	_indices.push_back(0);
+	_indices.push_back(2);
+	_indices.push_back(3);
+
+	_fixBuffers();
 }
 
 void PrimitiveMeshes::_createPrism() {

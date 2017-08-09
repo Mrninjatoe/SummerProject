@@ -28,7 +28,6 @@ int Engine::run() {
 		// Rendering and updating etc...
 		glClearColor(0, 0, 0, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		_basicShader->bind().setUniform("nice", time);
 		_world->update(delta);
 		time += 1 * delta;
 	}
@@ -80,8 +79,8 @@ void Engine::_initGL() {
 	
 	SDL_GL_SetSwapInterval(true);
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_BACK);
+	/*glEnable(GL_CULL_FACE);
+	glCullFace(GL_BACK);*/
 	glEnable(GL_PROGRAM_POINT_SIZE);
 	
 	glViewport(0, 0, _width, _height);
@@ -89,8 +88,7 @@ void Engine::_initGL() {
 
 void Engine::_initVariables() {
 	_basicShader = std::make_shared<ShaderProgram>("assets/shaders/final.vert", "assets/shaders/final.frag");
-	_basicShader->bind().addUniform("nice")
-		.addUniform("proj")
+	_basicShader->bind().addUniform("proj")
 		.addUniform("view")
 		.addUniform("model")
 		.addUniform("lightPos");
