@@ -25,10 +25,22 @@ int Engine::run() {
 		if (time >= M_PI * 2)
 			time = 0.f;
 
-		// Rendering and updating etc...
+		// Rendering and updating etc... Updating renders, which is pretty stupid.
+		_basicShader->bind();
+		_imageBuffer->bind();
 		glClearColor(0, 0, 0, 1);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		_world->update(delta);
+		_world->render();
+
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+		glClearColor(0, 0, 0, 1);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		_toScreenShader->bind();
+		_imageBuffer->bindTexture(0);
+		_finalScreen->render();
+
+
 		time += 1 * delta;
 	}
 
@@ -78,7 +90,7 @@ void Engine::_initGL() {
 	glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, NULL, true);
 	
 	SDL_GL_SetSwapInterval(true);
-	glEnable(GL_DEPTH_TEST);
+	glDisable(GL_DEPTH_TEST);
 	/*glEnable(GL_CULL_FACE);
 	glCullFace(GL_BACK);*/
 	glEnable(GL_PROGRAM_POINT_SIZE);
@@ -87,10 +99,24 @@ void Engine::_initGL() {
 }
 
 void Engine::_initVariables() {
-	_basicShader = std::make_shared<ShaderProgram>("assets/shaders/final.vert", "assets/shaders/final.frag");
+	_basicShader = std::make_shared<ShaderProgram>("assets/shaders/firstPass.vert", "assets/shaders/firstPass.frag");
 	_basicShader->bind().addUniform("proj")
 		.addUniform("view")
 		.addUniform("model")
-		.addUniform("lightPos");
+		.addUniform("lightPos")
+		.addUniform("texOffset1")
+		.addUniform("texOffset2")
+		.addUniform("texCoordInfo")
+		.addUniform("particleColor");
+	
+	_toScreenShader = std::make_shared<ShaderProgram>("assets/shaders/grass.vert","assets/shaders/grass.geom", "assets/shaders/grass.frag");
+
+	_toScreenShader = std::make_shared<ShaderProgram>("assets/shaders/screen.vert", "assets/shaders/screen.frag");
+
+	_imageBuffer = std::make_shared<FrameBuffer>();
+	_imageBuffer->bind().addTexture(0, GL_TEXTURE_2D, GL_RGB, _width, _height, false, GL_UNSIGNED_BYTE);
+
 	_world = std::make_shared<World>();
+	_finalScreen = std::make_shared<PrimitiveMeshes>(PrimitiveMeshes::QUAD);
+
 }

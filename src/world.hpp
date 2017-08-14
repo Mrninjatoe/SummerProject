@@ -10,6 +10,7 @@ public:
 	World();
 	virtual ~World();
 	void update(float delta);
+	void render();
 	std::shared_ptr<Entity> createEntity(glm::vec3 pos);
 private:
 	std::vector<std::shared_ptr<Entity>> _entities;

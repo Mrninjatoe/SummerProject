@@ -1,6 +1,12 @@
-﻿  particlecomponent.cpp
-d:\github\summerproject\src\components\particlecomponent.cpp(27): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-d:\github\summerproject\src\components\particlecomponent.cpp(61): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-d:\github\summerproject\src\components\particlecomponent.cpp(79): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+﻿  world.cpp
+  main.cpp
+d:\github\summerproject\src\main.cpp(7): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  engine.cpp
+  particlecomponent.cpp
+d:\github\summerproject\src\components\particlecomponent.cpp(29): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+d:\github\summerproject\src\components\particlecomponent.cpp(71): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+d:\github\summerproject\src\components\particlecomponent.cpp(115): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  cameracomponent.cpp
+  Generating Code...
   SummerProject.vcxproj -> D:\Github\SummerProject\/build/Debug/x64/SummerProject.exe
   SummerProject.vcxproj -> D:\Github\SummerProject\/build/Debug/x64/SummerProject.pdb (Partial PDB)

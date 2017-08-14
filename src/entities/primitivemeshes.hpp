@@ -20,6 +20,7 @@ public:
 	GLuint getEBO(){return _ebo;}
 	std::vector<unsigned int> getIndices() { return _indices; }
 	std::vector<Vertex> getVertices() { return _vertices; }
+	void render();
 	virtual ~PrimitiveMeshes();
 private:
 	std::vector<unsigned int> _indices;

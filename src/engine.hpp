@@ -10,6 +10,7 @@
 #include <iostream>
 
 #include "entities/primitivemeshes.hpp"
+#include "framebuffer.hpp"
 #include "shaderprogram.hpp"
 #include "world.hpp"
 
@@ -47,7 +48,11 @@ private:
 	SDL_Window* _window;
 	SDL_GLContext _context;
 	std::shared_ptr<ShaderProgram> _basicShader;
+	std::shared_ptr<ShaderProgram> _toScreenShader;
+	std::shared_ptr<ShaderProgram> _grassShader;
+	std::shared_ptr<FrameBuffer> _imageBuffer;
 	std::shared_ptr<World> _world;
+	std::shared_ptr<PrimitiveMeshes> _finalScreen;
 	
 	Engine() {}
 	virtual ~Engine();

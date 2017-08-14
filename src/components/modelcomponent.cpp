@@ -15,8 +15,6 @@ ModelComponent::~ModelComponent() {
 
 void ModelComponent::update(float delta) {
 	// Make it good with instancing...
-	glBindVertexArray(_mesh->getVAO());
-	glDrawElementsInstanced(GL_TRIANGLES, _mesh->getIndices().size(), GL_UNSIGNED_INT, NULL, 1);
 }
 
 void ModelComponent::render() {

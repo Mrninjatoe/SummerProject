@@ -158,10 +158,12 @@
     <ClCompile Include="src\engine.cpp" />
     <ClCompile Include="src\entities\blockchunk.cpp" />
     <ClCompile Include="src\entity.cpp" />
+    <ClCompile Include="src\framebuffer.cpp" />
     <ClCompile Include="src\lib\glad.c" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\entities\primitivemeshes.cpp" />
     <ClCompile Include="src\shaderprogram.cpp" />
+    <ClCompile Include="src\texture.cpp" />
     <ClCompile Include="src\world.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -174,7 +176,9 @@
     <ClInclude Include="src\entities\blockchunk.hpp" />
     <ClInclude Include="src\entity.hpp" />
     <ClInclude Include="src\entities\primitivemeshes.hpp" />
+    <ClInclude Include="src\framebuffer.hpp" />
     <ClInclude Include="src\shaderprogram.hpp" />
+    <ClInclude Include="src\texture.hpp" />
     <ClInclude Include="src\world.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

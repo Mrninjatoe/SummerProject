@@ -23,6 +23,11 @@ PrimitiveMeshes::~PrimitiveMeshes() {
 	
 }
 
+void PrimitiveMeshes::render() {
+	glBindVertexArray(_vao);
+	glDrawElementsInstanced(GL_TRIANGLES, _indices.size(), GL_UNSIGNED_INT, NULL, 1);
+}
+
 void PrimitiveMeshes::_createTriangle() {
 	_vertices.push_back(
 		Vertex{
@@ -71,7 +76,7 @@ void PrimitiveMeshes::_createQuad() {
 			glm::vec3(-0.5f, 0.5f, 0.0f),
 			glm::vec3(0, 0, -1.f),
 			glm::vec3(1.0f, 1.f, 0.f),
-			glm::vec2(0.0f, 0.0f)
+			glm::vec2(0.0f, 1.0f)
 		}
 		);
 		_vertices.push_back(
@@ -79,7 +84,7 @@ void PrimitiveMeshes::_createQuad() {
 			glm::vec3(0.5f, 0.5f, 0.0f),
 			glm::vec3(0, 0, -1.f),
 			glm::vec3(.0f, 1.f, 1.f),
-			glm::vec2(0.0f, 0.0f)
+			glm::vec2(1.0f, 1.0f)
 		}
 		);
 		_vertices.push_back(
@@ -87,7 +92,7 @@ void PrimitiveMeshes::_createQuad() {
 			glm::vec3(0.5f, -0.5f, 0.0f),
 			glm::vec3(0, 0, -1.f),
 			glm::vec3(.0f, 1.f, 1.f),
-			glm::vec2(0.0f, 0.0f)
+			glm::vec2(1.0f, 0.0f)
 		}
 		);
 	}

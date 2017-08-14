@@ -19,6 +19,17 @@ World::~World() {
 
 }
 
+void World::render() {
+	for (std::shared_ptr<Entity> e : _entities) {
+		auto mc = e->get<ModelComponent>();
+		if (mc)
+			mc->render();
+		auto pc = e->get<ParticleComponent>();
+		if (pc)
+			pc->render();
+	}
+}
+
 void World::update(float delta) {
 	auto shader = Engine::getInstance().getShader();
 	for (std::shared_ptr<Entity> e : _entities) {
@@ -30,9 +41,13 @@ void World::update(float delta) {
 		shader->bind().setUniform("model", tc->getModelMX());
 
 		auto cc = e->get<CameraComponent>();
-		if (cc) {
+		if (cc)
 			shader->bind().setUniform("lightPos", cc->getCameraPos());
-		}
+		
+		auto pc = e->get<ParticleComponent>();
+		if (pc)
+			pc->getTexture()->bind(0);
+
 		e->update(delta);
 	}
 }
